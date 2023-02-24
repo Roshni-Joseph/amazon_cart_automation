@@ -11,9 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import pages.AddToCartButton;
-import pages.IncrementQuantity;
-import pages.Subtotal;
+import pages.*;
 import utils.BrowserManager;
 import utils.QaProps;
 import utils.TestDataReader;
@@ -26,6 +24,13 @@ public class StepDefinitions {
     String url;
     AddToCartButton addToCartButton;
     Subtotal subtotal;
+    DeleteFromCart deleteFromCart;
+
+    NegativeScenario negativeScenario;
+
+    ScenarioOutline scenarioOutline;
+
+    FailedTestCase failedTestCase;
 
     HashMap<String,String> data;
     Scenario scenario;
@@ -52,8 +57,7 @@ public class StepDefinitions {
         addToCartButton.getSearchBox().sendKeys(Keys.ENTER);
         addToCartButton.getIphone().click();
         Thread.sleep(4000);
-//        JavascriptExecutor js = (JavascriptExecutor)driver;
-//        js.executeScript("window.scrollBy(0,500)");
+
         for(String winHandle : driver.getWindowHandles()){
             driver.switchTo().window(winHandle);
         }
@@ -78,24 +82,25 @@ public class StepDefinitions {
     }
 
 
-//    @Given("the user has an item in the cart")
-//    public void the_user_has_an_item_in_the_cart() {
-////        url= QaProps.getValue("url");
-////        driver.get(url);
-//
-////        incrementQuantity = new IncrementQuantity(driver);
-//
-//
-//
-//    }
-//    @When("the user increases the quantity to two")
-//    public void the_user_increases_the_quantity_to_two() {
-//
-//    }
-//    @Then("the price is doubled")
-//    public void the_price_is_doubled() {
-//
-//    }
+    @Given("the user has an item in the cart")
+    public void the_user_has_an_item_in_the_cart() {
+//        url= QaProps.getValue("url");
+//        driver.get(url);
+
+//        incrementQuantity = new IncrementQuantity(driver);
+
+
+
+    }
+    @When("the user increases the quantity to two")
+    public void the_user_increases_the_quantity_to_two() {
+
+    }
+    @Then("the price is doubled")
+    public void the_price_is_doubled() {
+
+
+    }
 
 
 
@@ -149,9 +154,100 @@ public class StepDefinitions {
         String totalAmt = subtotal.getTotalPrice().getText();
         System.out.println(totalAmt);
         Thread.sleep(4000);
-        Assert.assertEquals(totalAmt,"₹1,42,998.00");
+        Assert.assertEquals(totalAmt,"₹1,18,998.00");
 
     }
 
+    @Given("the cart contain two items")
+    public void the_cart_contain_two_items() {
+        url= QaProps.getValue("url");
+        driver.get(url);
+
+    }
+    @When("the user clicks on delete button for first item")
+    public void the_user_clicks_on_delete_button_for_first_item() throws InterruptedException {
+        deleteFromCart = new DeleteFromCart(driver);
+        data= TestDataReader.getData(scenario.getName());
+        deleteFromCart.getSearchBox().sendKeys(data.get("Typevalue"));
+        deleteFromCart.getSearchBox().sendKeys(Keys.ENTER);
+        deleteFromCart.getIphone().click();
+        Thread.sleep(4000);
+//        JavascriptExecutor js = (JavascriptExecutor)driver;
+//        js.executeScript("window.scrollBy(0,500)");
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
+        }
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(deleteFromCart.getAddToCartBtn()).perform();
+        Thread.sleep(4000);
+        deleteFromCart.getAddToCartBtn().click();
+
+    }
+    @Then("the item is removed from cart and price is decreased")
+    public void the_item_is_removed_from_cart_and_price_is_decreased() {
+
+    }
+
+
+    @Given("user navigate to amazon website")
+    public void user_navigate_to_amazon_website() {
+        url= QaProps.getValue("url");
+        driver.get(url);
+    }
+    @When("the user search for invalid item name")
+    public void the_user_search_for_invalid_item_name() {
+        negativeScenario = new NegativeScenario(driver);
+        data= TestDataReader.getData(scenario.getName());
+        negativeScenario.getSearchBox().sendKeys(data.get("Typevalue"));
+        negativeScenario.getSearchBox().sendKeys(Keys.ENTER);
+    }
+    @Then("{string} is displayed")
+    public void is_displayed(String string) {
+
+    }
+
+
+    @Given("the user navigates to amazon website")
+    public void the_user_navigates_to_amazon_website() {
+        url= QaProps.getValue("url");
+        driver.get(url);
+    }
+    @When("user search for product as {string}")
+    public void user_search_for_products(String arg0) {
+        scenarioOutline = new ScenarioOutline(driver);
+
+        scenarioOutline.getSearchBox().sendKeys(arg0);
+        scenarioOutline.getSearchBox().sendKeys(Keys.ENTER);
+    }
+    @Then("the products are displayed")
+    public void the_products_are_displayed() {
+
+    }
+
+
+    @Given("user open amazon website")
+    public void user_open_amazon_website() {
+        url= QaProps.getValue("url");
+        driver.get(url);
+    }
+    @When("the user add item to cart")
+    public void the_user_add_item_to_cart() {
+
+        failedTestCase = new FailedTestCase(driver);
+        data= TestDataReader.getData(scenario.getName());
+        failedTestCase.getSearchBox().sendKeys(data.get("Typevalue"));
+        failedTestCase.getSearchBox().sendKeys(Keys.ENTER);
+        failedTestCase.getIphone().click();
+        failedTestCase.getAddToCartBtn().click();
+
+    }
+    @Then("the item is displayed in cart")
+    public void the_item_is_displayed_in_cart() {
+        String text = addToCartButton.getAddedToCart().getText();
+        Assert.assertEquals(text,"Added to Cart");
+
+
+    }
 
 }

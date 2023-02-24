@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DeleteFromCart {
+public class FailedTestCase {
     private WebDriver driver;
 
-    public DeleteFromCart(WebDriver driver){
+    public FailedTestCase(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
@@ -16,24 +16,18 @@ public class DeleteFromCart {
     @FindBy(xpath = "//input[@id=\"twotabsearchtextbox\"]")
     WebElement searchBox;
 
+
     @FindBy(xpath = "(//span[@class=\"a-size-medium a-color-base a-text-normal\"])[1]")
     WebElement iphone;
 
     @FindBy(id = "add-to-cart-button")
     WebElement addToCartBtn;
 
-    @FindBy(xpath = "//span[@id=\"attach-sidesheet-view-cart-button-announce\"]")
-    WebElement cart;
-
-    @FindBy(xpath = "(//input[@class=\"a-color-link\"])[1]")
-    WebElement deleteBtn;
-
-    @FindBy(xpath = "//h1[@class=\"a-spacing-mini a-spacing-top-base\"]")
-    WebElement cartIsEmpty;
 
     public WebElement getSearchBox() {
         return searchBox;
     }
+
 
     public WebElement getIphone() {
         return iphone;
@@ -43,15 +37,5 @@ public class DeleteFromCart {
         return addToCartBtn;
     }
 
-    public WebElement getCart() {
-        return cart;
-    }
 
-    public WebElement getDeleteBtn() {
-        return deleteBtn;
-    }
-
-    public WebElement getCartIsEmpty() {
-        return cartIsEmpty;
-    }
 }
