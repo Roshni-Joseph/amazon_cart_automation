@@ -1,5 +1,5 @@
 Feature: Add to cart feature in Amazon
-
+  @smoke
   Scenario: Verify item is added to cart when add to cart button is clicked
     Given the user selects the item
     When the user clicks add to cart button
@@ -29,7 +29,7 @@ Feature: Add to cart feature in Amazon
 #    Given the cart contain one item
 #    When the user clicks on delete button
 #    Then the cart is empty
-  @smoke
+
   Scenario: Verify add to cart button
     Given user open amazon website
     When the user add item to cart
@@ -39,9 +39,11 @@ Feature: Add to cart feature in Amazon
   Scenario Outline: Verify the products are displayed when user search for different products
     Given the user navigates to amazon website
     When user search for product as "<itemname>"
-    Then the products are displayed
+    Then the products are displayed as "<result>"
     Examples:
-      |itemname|
-      |mobiles|
-      |toys|
+      |itemname|result|
+      |mobiles|found|
+      |toys|  ready|
+
+
 

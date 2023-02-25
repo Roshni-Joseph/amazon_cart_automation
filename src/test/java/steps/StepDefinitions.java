@@ -75,9 +75,10 @@ public class StepDefinitions {
     @Then("the item is added to cart")
     public void the_item_is_added_to_cart() throws InterruptedException {
         Thread.sleep(20000);
+        data= TestDataReader.getData(scenario.getName());
         String text = addToCartButton.getAddedToCart().getText();
         Thread.sleep(2000);
-        Assert.assertEquals(text,"Added to Cart");
+        Assert.assertEquals(text,data.get("Assertion"));
 
     }
 
@@ -242,12 +243,11 @@ public class StepDefinitions {
         failedTestCase.getAddToCartBtn().click();
 
     }
-    @Then("the item is displayed in cart")
-    public void the_item_is_displayed_in_cart() {
+
+
+    @Then("the products are displayed as {string}")
+    public void theProductsAreDisplayedAs(String arg0) {
         String text = addToCartButton.getAddedToCart().getText();
-        Assert.assertEquals(text,"Added to Cart");
-
-
+        Assert.assertEquals(text,arg0);
     }
-
 }
