@@ -9,7 +9,7 @@ Feature: Add to cart feature in Amazon
     Given the user navigate to amazon website
     When the user selects the items and click add to cart button
     Then the items are added to cart and subtotal is shown
-  @smoke
+
   Scenario: Verify item can be deleted from cart
     Given the cart contain two items
     When the user clicks on delete button for first item

@@ -1,13 +1,16 @@
+pages\CartIconIsOne.class
 pages\DeleteFromCart.class
 steps\StepDefinitions.class
 utils\BrowserManager.class
+utils\ClickUtils.class
 pages\ScenarioOutline.class
 runners\TestRunner.class
 utils\TestDataReader.class
-pages\IncrementQuantity.class
+utils\WaitUtils.class
 pages\NegativeScenario.class
 pages\Subtotal.class
 pages\AddToCartButton.class
+pages\CartIconIsZero.class
 utils\QaProps.class
 pages\FailedTestCase.class
 steps\Hooks.class
