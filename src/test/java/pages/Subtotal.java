@@ -26,7 +26,7 @@ public class Subtotal {
     @FindBy(xpath = "(//span[@class=\"a-size-medium a-color-base a-text-normal\"])[2]")
     WebElement iphone2;
 
-    @FindBy(xpath = "(//input[@class=\"a-button-input\"])[31]")
+    @FindBy(xpath = "(//input[@class=\"a-button-input\"])[25]")
     WebElement cart;
 
     @FindBy(id = "attach-accessory-cart-subtotal")

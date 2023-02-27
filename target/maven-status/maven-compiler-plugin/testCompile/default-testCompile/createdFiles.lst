@@ -1,0 +1,13 @@
+pages\DeleteFromCart.class
+steps\StepDefinitions.class
+utils\BrowserManager.class
+pages\ScenarioOutline.class
+runners\TestRunner.class
+utils\TestDataReader.class
+pages\IncrementQuantity.class
+pages\NegativeScenario.class
+pages\Subtotal.class
+pages\AddToCartButton.class
+utils\QaProps.class
+pages\FailedTestCase.class
+steps\Hooks.class

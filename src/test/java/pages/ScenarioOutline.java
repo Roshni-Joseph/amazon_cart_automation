@@ -16,10 +16,15 @@ public class ScenarioOutline {
     @FindBy(xpath = "//input[@id=\"twotabsearchtextbox\"]")
     WebElement searchBox;
 
+    @FindBy(className = "a-color-state")
+    WebElement item;
+
 
     public WebElement getSearchBox() {
         return searchBox;
     }
 
-
+    public WebElement getItem() {
+        return item;
+    }
 }

@@ -20,6 +20,9 @@ public class NegativeScenario {
     @FindBy(xpath = "(//span[@class=\"a-size-medium a-color-base a-text-normal\"])[1]")
     WebElement iphone;
 
+    @FindBy(xpath = "(//span[@class=\"a-size-medium a-color-base\"])[1]")
+    WebElement qqqq;
+
     public WebElement getSearchBox() {
         return searchBox;
     }
@@ -30,5 +33,9 @@ public class NegativeScenario {
 
     public WebElement getIphone() {
         return iphone;
+    }
+
+    public WebElement getQqqq() {
+        return qqqq;
     }
 }

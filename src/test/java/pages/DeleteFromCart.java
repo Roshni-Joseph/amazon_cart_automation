@@ -22,8 +22,8 @@ public class DeleteFromCart {
     @FindBy(id = "add-to-cart-button")
     WebElement addToCartBtn;
 
-    @FindBy(xpath = "//span[@id=\"attach-sidesheet-view-cart-button-announce\"]")
-    WebElement cart;
+    @FindBy(xpath = "//a[@id=\"nav-cart\"]")
+    WebElement tabcart;
 
     @FindBy(xpath = "(//input[@class=\"a-color-link\"])[1]")
     WebElement deleteBtn;
@@ -43,8 +43,8 @@ public class DeleteFromCart {
         return addToCartBtn;
     }
 
-    public WebElement getCart() {
-        return cart;
+    public WebElement getTabcart() {
+        return tabcart;
     }
 
     public WebElement getDeleteBtn() {

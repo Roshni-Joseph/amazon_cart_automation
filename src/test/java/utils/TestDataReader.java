@@ -3,9 +3,6 @@ package utils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,7 +21,7 @@ public class TestDataReader {
         if (workbook == null) {
             FileInputStream fileInputStream = null;
             try {
-                fileInputStream = new FileInputStream("src/test/resources/amazon.xlsx");
+                fileInputStream = new FileInputStream("src/test/resources/amazon2.xlsx");
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -42,11 +39,10 @@ public class TestDataReader {
                 if(row != null && row.getCell(0 )!= null) {
                     System.out.println(i);
                     String key = row.getCell(0).getStringCellValue();
-//                    System.out.println(key);
+                    System.out.println(key);
 
 
                     HashMap<String, String> rowData = new HashMap();
-//                    System.out.println(rowData);
 
                     for (int j = 1; j < row.getLastCellNum(); j++) { //itterative through all column
                         String columnName = sheet.getRow(0).getCell(j).getStringCellValue();
@@ -68,4 +64,5 @@ public class TestDataReader {
         init();
         return data.get(key);
     }
+
 }
