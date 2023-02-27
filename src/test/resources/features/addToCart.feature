@@ -5,11 +5,6 @@ Feature: Add to cart feature in Amazon
     When the user clicks add to cart button
     Then the item is added to cart
 
-#  Scenario: Verify the subtotal is shown when new item is added to cart
-#    Given the user navigate to amazon website
-#    When the user selects the items and click add to cart button
-#    Then the items are added to cart and subtotal is shown
-
   Scenario: Verify item can be deleted from cart
     Given the cart contain two items
     When the user clicks on delete button for first item
@@ -43,6 +38,11 @@ Feature: Add to cart feature in Amazon
       |itemname|result|
       |mobiles|\"mobiles\"|
       |toys|\"toys\"|
+
+#  Scenario: Verify the subtotal is shown when new item is added to cart
+#    Given the user navigate to amazon website
+#    When the user selects the items and click add to cart button
+#    Then the items are added to cart and subtotal is shown
 
 
 
